@@ -6,13 +6,13 @@ fs.readFile('words.txt', 'utf8', (err, words) => {
   }
 
   const array = words.split('\r\n')
-  const data = []
+
+  const data = {}
 
   array.forEach(word => {
-  	let key = 0
-    for (let i = 0; i < word.length; i++) {
-      key += word.charCodeAt(i)
-    }
+    const wordArray = word.split('')
+    wordArray.sort()
+    const key = wordArray.join('')
 
     if (undefined === data[key]) {
     	data[key] = [word]
@@ -21,6 +21,5 @@ fs.readFile('words.txt', 'utf8', (err, words) => {
     }
   })
 
-  const result = data.filter(Boolean)
-  console.log(result)
+  console.log(data)
 })
