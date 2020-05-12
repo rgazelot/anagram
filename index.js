@@ -21,5 +21,9 @@ fs.readFile('words.txt', 'utf8', (err, words) => {
     }
   })
 
-  console.log(data)
+  for (const key in data) {
+    if (data[key].length > 1) {
+      console.log(data[key])
+    }
+  }
 })
